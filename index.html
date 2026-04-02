@@ -267,7 +267,9 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    p.vertex(pt.x, pt.y);
+                    let newX = pt.x + tx;
+                    let newY = pt.y + ty;
+                    p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
             };
@@ -303,7 +305,9 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    p.vertex(pt.x, pt.y);
+                    let newX = pt.x * cosT - pt.y * sinT;
+                    let newY = pt.x * sinT + pt.y * cosT;
+                    p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
             };
@@ -340,7 +344,9 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    p.vertex(pt.x, pt.y);
+                    let newX = pt.x * sx;
+                    let newY = pt.y * sy;
+                    p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
             };
@@ -378,7 +384,9 @@
                 p.beginShape();
                 baseShape.forEach(pt => {
                     // Math: x' = x + y*shx, y' = y + x*shy
-                    p.vertex(pt.x, pt.y);
+                    let newX = pt.x + pt.y * shx;
+                    let newY = pt.y + pt.x * shy;
+                    p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
             };
@@ -411,7 +419,15 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    p.vertex(pt.x, pt.y);
+                    let newX = pt.x;
+                    let newY = pt.y;
+                    if (refX) {
+                        newY = -newY;
+                    }
+                    if (refY) {
+                        newX = -newX;
+                    }
+                    p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
             };
