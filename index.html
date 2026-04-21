@@ -344,9 +344,7 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    let newX = pt.x * sx;
-                    let newY = pt.y * sy;
-                    p.vertex(newX, newY);
+                    p.vertex(pt.x * sx, pt.y * sy);
                 });
                 p.endShape(p.CLOSE);
             };
@@ -419,9 +417,9 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    let newX = refX ? -pt.x : pt.x;
-                    let newY = refY ? -pt.y : pt.y;
-                    p.vertex(newX, newY);
+                    let rx = refY ? -pt.x : pt.x;
+                    let ry = refX ? -pt.y : pt.y;
+                    p.vertex(rx, ry);
                 });
                 p.endShape(p.CLOSE);
             };
