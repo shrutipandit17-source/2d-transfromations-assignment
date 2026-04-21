@@ -419,14 +419,8 @@
                 p.strokeWeight(2);
                 p.beginShape();
                 baseShape.forEach(pt => {
-                    let newX = pt.x;
-                    let newY = pt.y;
-                    if (refX) {
-                        newY = -newY;
-                    }
-                    if (refY) {
-                        newX = -newX;
-                    }
+                    let newX = refX ? -pt.x : pt.x;
+                    let newY = refY ? -pt.y : pt.y;
                     p.vertex(newX, newY);
                 });
                 p.endShape(p.CLOSE);
